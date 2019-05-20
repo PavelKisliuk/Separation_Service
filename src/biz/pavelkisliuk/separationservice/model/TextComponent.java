@@ -26,7 +26,7 @@
 package biz.pavelkisliuk.separationservice.model;
 
 /**
- * The {@code ITextComponent} interface serve for realization of
+ * The {@code TextComponent} interface serve for realization of
  * composition pattern.
  * <p>
  *
@@ -35,13 +35,13 @@ package biz.pavelkisliuk.separationservice.model;
  * @see TextUnitComposite
  * @since 12.0
  */
-public interface ITextComponent {
+public interface TextComponent {
 	/**
-	 * Add {@code ITextComponent} element to {@code textBox} of {@code TextUnitComposite}.
+	 * Add {@code TextComponent} element to {@code textBox} of {@code TextUnitComposite}.
 	 * <p>
 	 *
 	 * @param textComponent added to {@code textBox} of {@code TextUnitComposite}.
 	 * @return {@code true}, if appending successful, else {@code false}.
 	 */
-	boolean add(ITextComponent textComponent);
+	boolean add(TextComponent textComponent);
 }

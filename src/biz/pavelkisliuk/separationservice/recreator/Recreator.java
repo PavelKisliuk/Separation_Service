@@ -25,35 +25,35 @@
 
 package biz.pavelkisliuk.separationservice.recreator;
 
-import biz.pavelkisliuk.separationservice.model.ITextComponent;
+import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 
 /**
- * The class repair {@code ITextComponent} element's to {@code String}.
+ * The class repair {@code TextComponent} element's to {@code String}.
  * <p>
  *
  * @author Kisliuk Pavel Sergeevich
- * @see ITextComponent
+ * @see TextComponent
  * @see TextUnitComposite
  * @since 12.0
  */
 public class Recreator {
 	/**
-	 * Return {@code String} repaired representation of {@code ITextComponent}.
+	 * Return {@code String} repaired representation of {@code TextComponent}.
 	 * <p>
 	 *
 	 * @param textComponent is realization of composition pattern.
-	 * @return {@code String} repaired representation of {@code ITextComponent}.
+	 * @return {@code String} repaired representation of {@code TextComponent}.
 	 */
-	public String recreate(ITextComponent textComponent) {
+	public String recreate(TextComponent textComponent) {
 		StringBuilder stringBuilder = new StringBuilder();
 		//------------------------------------------------------------
-		for (ITextComponent ident : ((TextUnitComposite) textComponent).getTextBox()) {
+		for (TextComponent ident : ((TextUnitComposite) textComponent).getTextBox()) {
 			stringBuilder.append("\t");
 			//------------------------------------------------------------
-			for (ITextComponent sentence : ((TextUnitComposite) ident).getTextBox()) {
+			for (TextComponent sentence : ((TextUnitComposite) ident).getTextBox()) {
 				//------------------------------------------------------------
-				for (ITextComponent lexicalUnit : ((TextUnitComposite) sentence).getTextBox()) {
+				for (TextComponent lexicalUnit : ((TextUnitComposite) sentence).getTextBox()) {
 					stringBuilder.append(lexicalUnit.toString()).append(" ");
 				}
 				//------------------------------------------------------------

@@ -1,13 +1,12 @@
 package biz.pavelkisliuk.separationservice.sorter;
 
-import biz.pavelkisliuk.separationservice.model.ITextComponent;
+import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 import biz.pavelkisliuk.separationservice.separator.ITextSeparatorChain;
 import biz.pavelkisliuk.separationservice.separator.IdentSeparator;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -40,13 +39,13 @@ public class IdentSortTest {
 			stringBuilder.append(s);
 		}
 		ITextSeparatorChain separator = new IdentSeparator();
-		ITextComponent textComponent = separator.separate(stringBuilder.toString());
+		TextComponent textComponent = separator.separate(stringBuilder.toString());
 
 		stringBuilder = new StringBuilder();
 		for(String s : expectedList) {
 			stringBuilder.append(s);
 		}
-		ITextComponent expected = separator.separate(stringBuilder.toString());
+		TextComponent expected = separator.separate(stringBuilder.toString());
 		new IdentSort().sort((TextUnitComposite)textComponent);
 		assertEquals(textComponent, expected);
 	}

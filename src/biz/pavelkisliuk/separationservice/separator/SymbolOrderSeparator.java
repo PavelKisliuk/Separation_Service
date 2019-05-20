@@ -25,7 +25,7 @@
 
 package biz.pavelkisliuk.separationservice.separator;
 
-import biz.pavelkisliuk.separationservice.model.ITextComponent;
+import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 
 import java.util.regex.Matcher;
@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
  * @see SentenceSeparator
  * @see LexicalUnitSeparator
  * @see SymbolSeparator
- * @see ITextComponent
+ * @see TextComponent
  * @since 12.0
  */
 public class SymbolOrderSeparator implements ITextSeparatorChain {
@@ -56,15 +56,15 @@ public class SymbolOrderSeparator implements ITextSeparatorChain {
 	private ITextSeparatorChain nextSeparator = new SymbolSeparator();
 
 	/**
-	 * Separate {@code String} to symbols order as {@code ITextComponent} elements.
+	 * Separate {@code String} to symbols order as {@code TextComponent} elements.
 	 * <p>
 	 *
 	 * @param text is {@code String} for separating.
-	 * @return separated {@code ITextComponent}.
+	 * @return separated {@code TextComponent}.
 	 */
 	@Override
-	public ITextComponent separate(String text) {
-		ITextComponent textComponent = new TextUnitComposite();
+	public TextComponent separate(String text) {
+		TextComponent textComponent = new TextUnitComposite();
 
 		Pattern pattern = Pattern.compile(SYMBOL_ORDER_REG_EX);
 		Matcher matcher = pattern.matcher(text);

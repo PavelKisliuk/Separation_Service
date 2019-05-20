@@ -26,15 +26,15 @@
 package biz.pavelkisliuk.separationservice.model;
 
 /**
- * Leaf element of composition pattern. Implementation of the {@code ITextComponent} interface.
+ * Leaf element of composition pattern. Implementation of the {@code TextComponent} interface.
  * <p>
  *
  * @author Kisliuk Pavel Sergeevich
- * @see ITextComponent
+ * @see TextComponent
  * @see TextUnitComposite
  * @since 12.0
  */
-public class SymbolLeaf implements ITextComponent {
+public class SymbolLeaf implements TextComponent {
 	/**
 	 * Provide pure symbol of text.
 	 */
@@ -73,7 +73,7 @@ public class SymbolLeaf implements ITextComponent {
 	 * @throws UnsupportedOperationException anyway.
 	 */
 	@Override
-	public boolean add(ITextComponent textComponent) {
+	public boolean add(TextComponent textComponent) {
 		throw new UnsupportedOperationException();
 	}
 

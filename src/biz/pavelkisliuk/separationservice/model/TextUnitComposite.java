@@ -28,20 +28,20 @@ package biz.pavelkisliuk.separationservice.model;
 import java.util.ArrayList;
 
 /**
- * Composite element of composition pattern. Implementation of the {@code ITextComponent} interface.
+ * Composite element of composition pattern. Implementation of the {@code TextComponent} interface.
  * <p>
  *
  * @author Kisliuk Pavel Sergeevich
- * @see ITextComponent
+ * @see TextComponent
  * @see SymbolLeaf
  * @since 12.0
  */
-public class TextUnitComposite implements ITextComponent {
+public class TextUnitComposite implements TextComponent {
 	/**
-	 * Provide {@code ArrayList} of {@code ITextComponent} for composition
+	 * Provide {@code ArrayList} of {@code TextComponent} for composition
 	 * pattern realization.
 	 */
-	private ArrayList<ITextComponent> textBox;
+	private ArrayList<TextComponent> textBox;
 
 	/**
 	 * Default constructor.
@@ -56,7 +56,7 @@ public class TextUnitComposite implements ITextComponent {
 	 *
 	 * @return {@code textBox}.
 	 */
-	public ArrayList<ITextComponent> getTextBox() {
+	public ArrayList<TextComponent> getTextBox() {
 		return textBox;
 	}
 
@@ -66,19 +66,19 @@ public class TextUnitComposite implements ITextComponent {
 	 *
 	 * @param textBox is value replace {@code textBox}.
 	 */
-	public void setTextBox(ArrayList<ITextComponent> textBox) {
+	public void setTextBox(ArrayList<TextComponent> textBox) {
 		this.textBox = textBox;
 	}
 
 	/**
-	 * Append {@code ITextComponent} to {@code textBox}.
+	 * Append {@code TextComponent} to {@code textBox}.
 	 * <p>
 	 *
 	 * @param textComponent added to {@code textBox} of {@code TextUnitComposite}.
 	 * @return {@code true}, if appending successful, else {@code false}.
 	 */
 	@Override
-	public boolean add(ITextComponent textComponent) {
+	public boolean add(TextComponent textComponent) {
 		return textBox.add(textComponent);
 	}
 
@@ -101,7 +101,7 @@ public class TextUnitComposite implements ITextComponent {
 	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
-		for (ITextComponent box : textBox) {
+		for (TextComponent box : textBox) {
 			stringBuilder.append(box.toString());
 		}
 		return stringBuilder.toString();

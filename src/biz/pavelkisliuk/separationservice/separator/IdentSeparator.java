@@ -25,7 +25,7 @@
 
 package biz.pavelkisliuk.separationservice.separator;
 
-import biz.pavelkisliuk.separationservice.model.ITextComponent;
+import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 
 /**
@@ -38,7 +38,7 @@ import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
  * @see LexicalUnitSeparator
  * @see SymbolOrderSeparator
  * @see SymbolSeparator
- * @see ITextComponent
+ * @see TextComponent
  * @since 12.0
  */
 public class IdentSeparator implements ITextSeparatorChain {
@@ -53,15 +53,15 @@ public class IdentSeparator implements ITextSeparatorChain {
 	private ITextSeparatorChain nextSeparator = new SentenceSeparator();
 
 	/**
-	 * Separate {@code String} to idents as {@code ITextComponent} elements.
+	 * Separate {@code String} to idents as {@code TextComponent} elements.
 	 * <p>
 	 *
 	 * @param text is {@code String} for separating.
-	 * @return separated {@code ITextComponent}.
+	 * @return separated {@code TextComponent}.
 	 */
 	@Override
-	public ITextComponent separate(String text) {
-		ITextComponent textComponent = new TextUnitComposite();
+	public TextComponent separate(String text) {
+		TextComponent textComponent = new TextUnitComposite();
 
 		String[] separetedText = text.split(IDENT_REG_EX);
 		for (String s : separetedText) {

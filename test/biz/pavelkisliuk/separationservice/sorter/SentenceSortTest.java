@@ -1,6 +1,6 @@
 package biz.pavelkisliuk.separationservice.sorter;
 
-import biz.pavelkisliuk.separationservice.model.ITextComponent;
+import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 import biz.pavelkisliuk.separationservice.separator.ITextSeparatorChain;
 import biz.pavelkisliuk.separationservice.separator.IdentSeparator;
@@ -11,12 +11,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.testng.Assert.*;
 
 public class SentenceSortTest {
 
@@ -34,8 +31,8 @@ public class SentenceSortTest {
 		}
 
 		ITextSeparatorChain separator = new IdentSeparator();
-		ITextComponent textComponent = separator.separate(stringBuilder.toString());
-		ITextComponent ident = ((TextUnitComposite)textComponent).getTextBox().get(0);
+		TextComponent textComponent = separator.separate(stringBuilder.toString());
+		TextComponent ident = ((TextUnitComposite)textComponent).getTextBox().get(0);
 
 		((TextUnitComposite)ident).getTextBox().sort((Comparator.
 				comparingInt(o -> ((TextUnitComposite) o).getTextBox().size())));

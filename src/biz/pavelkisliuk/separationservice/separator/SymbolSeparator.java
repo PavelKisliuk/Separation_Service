@@ -25,7 +25,7 @@
 
 package biz.pavelkisliuk.separationservice.separator;
 
-import biz.pavelkisliuk.separationservice.model.ITextComponent;
+import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.SymbolLeaf;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 
@@ -39,20 +39,20 @@ import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
  * @see SentenceSeparator
  * @see LexicalUnitSeparator
  * @see SymbolOrderSeparator
- * @see ITextComponent
+ * @see TextComponent
  * @since 12.0
  */
 public class SymbolSeparator implements ITextSeparatorChain {
 	/**
-	 * Separate {@code String} to symbols as {@code ITextComponent} elements.
+	 * Separate {@code String} to symbols as {@code TextComponent} elements.
 	 * <p>
 	 *
 	 * @param text is {@code String} for separating.
-	 * @return separated {@code ITextComponent}.
+	 * @return separated {@code TextComponent}.
 	 */
 	@Override
-	public ITextComponent separate(String text) {
-		ITextComponent textComponent = new TextUnitComposite();
+	public TextComponent separate(String text) {
+		TextComponent textComponent = new TextUnitComposite();
 		for (Character ch : text.toCharArray()) {
 			textComponent.add(new SymbolLeaf(ch));
 		}

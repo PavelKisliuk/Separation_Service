@@ -25,7 +25,7 @@
 
 package biz.pavelkisliuk.separationservice.separator;
 
-import biz.pavelkisliuk.separationservice.model.ITextComponent;
+import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 
 import java.util.regex.Matcher;
@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
  * @see LexicalUnitSeparator
  * @see SymbolOrderSeparator
  * @see SymbolSeparator
- * @see ITextComponent
+ * @see TextComponent
  * @since 12.0
  */
 public class SentenceSeparator implements ITextSeparatorChain {
@@ -56,15 +56,15 @@ public class SentenceSeparator implements ITextSeparatorChain {
 	private ITextSeparatorChain nextSeparator = new LexicalUnitSeparator();
 
 	/**
-	 * Separate {@code String} to sentences as {@code ITextComponent} elements.
+	 * Separate {@code String} to sentences as {@code TextComponent} elements.
 	 * <p>
 	 *
 	 * @param text is {@code String} for separating.
-	 * @return separated {@code ITextComponent}.
+	 * @return separated {@code TextComponent}.
 	 */
 	@Override
-	public ITextComponent separate(String text) {
-		ITextComponent textComponent = new TextUnitComposite();
+	public TextComponent separate(String text) {
+		TextComponent textComponent = new TextUnitComposite();
 
 		Pattern pattern = Pattern.compile(SENTENCE_REG_EX);
 		Matcher matcher = pattern.matcher(text);
