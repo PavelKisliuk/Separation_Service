@@ -28,7 +28,7 @@ package biz.pavelkisliuk.separationservice.separator;
 import biz.pavelkisliuk.separationservice.model.TextComponent;
 
 /**
- * The {@code ITextSeparatorChain} interface for realization chain of responsibility
+ * The {@code TextSeparatorChain} interface for realization chain of responsibility
  * pattern for separating {@code String} of text as ident, sentence, lexical unit and symbol order.
  * <p>
  *
@@ -41,7 +41,7 @@ import biz.pavelkisliuk.separationservice.model.TextComponent;
  * @see TextComponent
  * @since 12.0
  */
-public interface ITextSeparatorChain {
+public interface TextSeparatorChain {
 	/**
 	 * Separate {@code String} to {@code TextComponent} elements.
 	 * <p>

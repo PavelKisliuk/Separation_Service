@@ -29,11 +29,11 @@ import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 
 /**
- * Class for separating text by lexical units. Implementation of the {@code ITextSeparatorChain} interface.
+ * Class for separating text by lexical units. Implementation of the {@code TextSeparatorChain} interface.
  * <p>
  *
  * @author Kisliuk Pavel Sergeevich
- * @see ITextSeparatorChain
+ * @see TextSeparatorChain
  * @see IdentSeparator
  * @see SentenceSeparator
  * @see SymbolOrderSeparator
@@ -41,16 +41,16 @@ import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
  * @see TextComponent
  * @since 12.0
  */
-public class LexicalUnitSeparator implements ITextSeparatorChain {
+public class LexicalUnitSeparator implements TextSeparatorChain {
 	/**
 	 * Expression for splitting text by lexical units.
 	 */
 	public static final String LEXICAL_UNIT_REG_EX = " +";
 
 	/**
-	 * Next {@code ITextSeparatorChain} of chain of responsibility pattern.
+	 * Next {@code TextSeparatorChain} of chain of responsibility pattern.
 	 */
-	private ITextSeparatorChain nextSeparator = new SymbolOrderSeparator();
+	private TextSeparatorChain nextSeparator = new SymbolOrderSeparator();
 
 	/**
 	 * Separate {@code String} to lexical units as {@code TextComponent} elements.

@@ -32,11 +32,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Class for separating text by sentences. Implementation of the {@code ITextSeparatorChain} interface.
+ * Class for separating text by sentences. Implementation of the {@code TextSeparatorChain} interface.
  * <p>
  *
  * @author Kisliuk Pavel Sergeevich
- * @see ITextSeparatorChain
+ * @see TextSeparatorChain
  * @see IdentSeparator
  * @see LexicalUnitSeparator
  * @see SymbolOrderSeparator
@@ -44,16 +44,16 @@ import java.util.regex.Pattern;
  * @see TextComponent
  * @since 12.0
  */
-public class SentenceSeparator implements ITextSeparatorChain {
+public class SentenceSeparator implements TextSeparatorChain {
 	/**
 	 * Expression for splitting text by sentences.
 	 */
 	public static final String SENTENCE_REG_EX = "(\\p{Alnum}+( \\p{Alnum})*)+(!(\\.*)|\\?(\\.*)|\\.+)*";
 
 	/**
-	 * Next {@code ITextSeparatorChain} of chain of responsibility pattern.
+	 * Next {@code TextSeparatorChain} of chain of responsibility pattern.
 	 */
-	private ITextSeparatorChain nextSeparator = new LexicalUnitSeparator();
+	private TextSeparatorChain nextSeparator = new LexicalUnitSeparator();
 
 	/**
 	 * Separate {@code String} to sentences as {@code TextComponent} elements.

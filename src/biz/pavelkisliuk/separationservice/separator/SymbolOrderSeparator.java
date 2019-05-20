@@ -32,11 +32,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Class for separating text by symbols order. Implementation of the {@code ITextSeparatorChain} interface.
+ * Class for separating text by symbols order. Implementation of the {@code TextSeparatorChain} interface.
  * <p>
  *
  * @author Kisliuk Pavel Sergeevich
- * @see ITextSeparatorChain
+ * @see TextSeparatorChain
  * @see IdentSeparator
  * @see SentenceSeparator
  * @see LexicalUnitSeparator
@@ -44,16 +44,16 @@ import java.util.regex.Pattern;
  * @see TextComponent
  * @since 12.0
  */
-public class SymbolOrderSeparator implements ITextSeparatorChain {
+public class SymbolOrderSeparator implements TextSeparatorChain {
 	/**
 	 * Expression for splitting text by symbols order.
 	 */
 	public static final String SYMBOL_ORDER_REG_EX = "\\p{Alnum}+|((\\.{3})|(!\\.\\.)|(\\?\\.\\.)|!|\\?|\\.)";
 
 	/**
-	 * Next {@code ITextSeparatorChain} of chain of responsibility pattern.
+	 * Next {@code TextSeparatorChain} of chain of responsibility pattern.
 	 */
-	private ITextSeparatorChain nextSeparator = new SymbolSeparator();
+	private TextSeparatorChain nextSeparator = new SymbolSeparator();
 
 	/**
 	 * Separate {@code String} to symbols order as {@code TextComponent} elements.

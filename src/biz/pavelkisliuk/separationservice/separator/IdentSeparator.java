@@ -29,11 +29,11 @@ import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
 
 /**
- * Class for separating text by idents. Implementation of the {@code ITextSeparatorChain} interface.
+ * Class for separating text by idents. Implementation of the {@code TextSeparatorChain} interface.
  * <p>
  *
  * @author Kisliuk Pavel Sergeevich
- * @see ITextSeparatorChain
+ * @see TextSeparatorChain
  * @see SentenceSeparator
  * @see LexicalUnitSeparator
  * @see SymbolOrderSeparator
@@ -41,16 +41,16 @@ import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
  * @see TextComponent
  * @since 12.0
  */
-public class IdentSeparator implements ITextSeparatorChain {
+public class IdentSeparator implements TextSeparatorChain {
 	/**
 	 * Expression for splitting text by idents.
 	 */
 	public static final String IDENT_REG_EX = "\t|\n\t|\n| {4}|\n( {4})";
 
 	/**
-	 * Next {@code ITextSeparatorChain} of chain of responsibility pattern.
+	 * Next {@code TextSeparatorChain} of chain of responsibility pattern.
 	 */
-	private ITextSeparatorChain nextSeparator = new SentenceSeparator();
+	private TextSeparatorChain nextSeparator = new SentenceSeparator();
 
 	/**
 	 * Separate {@code String} to idents as {@code TextComponent} elements.

@@ -2,7 +2,7 @@ package biz.pavelkisliuk.separationservice.sorter;
 
 import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
-import biz.pavelkisliuk.separationservice.separator.ITextSeparatorChain;
+import biz.pavelkisliuk.separationservice.separator.TextSeparatorChain;
 import biz.pavelkisliuk.separationservice.separator.IdentSeparator;
 import org.testng.annotations.Test;
 
@@ -30,7 +30,7 @@ public class SentenceSortTest {
 			stringBuilder.append(s);
 		}
 
-		ITextSeparatorChain separator = new IdentSeparator();
+		TextSeparatorChain separator = new IdentSeparator();
 		TextComponent textComponent = separator.separate(stringBuilder.toString());
 		TextComponent ident = ((TextUnitComposite)textComponent).getTextBox().get(0);
 
