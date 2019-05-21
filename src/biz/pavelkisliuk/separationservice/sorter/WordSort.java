@@ -12,11 +12,14 @@ public class WordSort {
 			for (TextComponent sentence : ((TextUnitComposite) ident).getTextBox()) {
 				for (TextComponent lexicalUnit : ((TextUnitComposite) sentence).getTextBox()) {
 					for(TextComponent symbolOrder : ((TextUnitComposite) lexicalUnit).getTextBox()) {
+						//delete all punctuation marks
 						((TextUnitComposite) symbolOrder).getTextBox().removeIf(
 								o -> !Character.isLetterOrDigit(((SymbolLeaf)o).getSymbol()));
 					}
+					//clean empty TextComponent
 					((TextUnitComposite) lexicalUnit).getTextBox().removeIf(o -> o.toString().isEmpty());
 				}
+				//sort
 				((TextUnitComposite) sentence).getTextBox().sort((Comparator.
 						comparingInt(o -> ((TextUnitComposite)((TextUnitComposite) o).getTextBox().get(0)).
 								getTextBox().size())));
