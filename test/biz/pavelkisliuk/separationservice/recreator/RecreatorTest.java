@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class RecreatorTest {
-	Recreator recreator = new Recreator();
+	private Recreator recreator = new Recreator();
 
 	@Test
 	public void testRecreateNull() {
