@@ -7,18 +7,18 @@ import biz.pavelkisliuk.separationservice.separator.IdentSeparator;
 import biz.pavelkisliuk.separationservice.separator.TextSeparatorChain;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
-public class IdentSortTest {
+public class WordSortTest {
 
 	@Test
 	public void testSort() throws CustomException {
 		SeparationFileReader fileReader = new SeparationFileReader();
 		TextSeparatorChain separator = new IdentSeparator();
-		TextComponent actual = separator.separate(fileReader.readToString("testfile/Identsort.txt"));
-		TextComponent expected = separator.separate(fileReader.readToString("testfile/ExpectedIdentSort.txt"));
+		TextComponent actual = separator.separate(fileReader.readToString("testfile/Wordsort.txt"));
+		TextComponent expected = separator.separate(fileReader.readToString("testfile/ExpectedWordSort.txt"));
 
-		new IdentSort().sort(actual);
+		new WordSort().sort(actual);
 		assertEquals(actual, expected);
 	}
 }

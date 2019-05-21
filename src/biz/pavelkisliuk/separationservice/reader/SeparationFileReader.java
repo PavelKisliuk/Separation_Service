@@ -54,4 +54,15 @@ public class SeparationFileReader {
 		}
 		return data;
 	}
+
+	public String readToString(String path) throws CustomException {
+		List<String> data = read(path);
+
+		StringBuilder stringBuilder = new StringBuilder();
+		for(String s : data) {
+			stringBuilder.append(s);
+		}
+
+		return stringBuilder.toString();
+	}
 }
