@@ -27,6 +27,9 @@ package biz.pavelkisliuk.separationservice.separator;
 
 import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Class for separating text by lexical units. Implementation of the {@code TextSeparatorChain} interface.
@@ -42,6 +45,8 @@ import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
  * @since 12.0
  */
 public class LexicalUnitSeparator implements TextSeparatorChain {
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	/**
 	 * Expression for splitting text by lexical units.
 	 */
@@ -62,8 +67,15 @@ public class LexicalUnitSeparator implements TextSeparatorChain {
 	@Override
 	public TextComponent separate(String text) {
 		TextComponent textComponent = new TextUnitComposite();
-		String[] symbolOrderGroup = text.split(LEXICAL_UNIT_REG_EX);
 
+		if((text == null) ||
+				(text.isEmpty()) ||
+				(text.isBlank())) {
+			LOGGER.log(Level.ERROR, "Problem with text in IdentSeparator. text -> " + text);
+			return textComponent;
+		}
+
+		String[] symbolOrderGroup = text.split(LEXICAL_UNIT_REG_EX);
 		for(String s : symbolOrderGroup) {
 			textComponent.add(nextSeparator.separate(s));
 		}

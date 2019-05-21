@@ -27,6 +27,9 @@ package biz.pavelkisliuk.separationservice.separator;
 
 import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Class for separating text by idents. Implementation of the {@code TextSeparatorChain} interface.
@@ -42,6 +45,8 @@ import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
  * @since 12.0
  */
 public class IdentSeparator implements TextSeparatorChain {
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	/**
 	 * Expression for splitting text by idents.
 	 */
@@ -62,6 +67,13 @@ public class IdentSeparator implements TextSeparatorChain {
 	@Override
 	public TextComponent separate(String text) {
 		TextComponent textComponent = new TextUnitComposite();
+
+		if((text == null) ||
+				(text.isEmpty()) ||
+					(text.isBlank())) {
+			LOGGER.log(Level.ERROR, "Problem with text in IdentSeparator. text -> " + text);
+			return textComponent;
+		}
 
 		String[] separetedText = text.split(IDENT_REG_EX);
 		for (String s : separetedText) {

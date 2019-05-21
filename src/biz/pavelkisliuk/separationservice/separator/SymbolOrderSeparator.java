@@ -27,6 +27,9 @@ package biz.pavelkisliuk.separationservice.separator;
 
 import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,6 +48,8 @@ import java.util.regex.Pattern;
  * @since 12.0
  */
 public class SymbolOrderSeparator implements TextSeparatorChain {
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	/**
 	 * Expression for splitting text by symbols order.
 	 */
@@ -65,6 +70,13 @@ public class SymbolOrderSeparator implements TextSeparatorChain {
 	@Override
 	public TextComponent separate(String text) {
 		TextComponent textComponent = new TextUnitComposite();
+
+		if((text == null) ||
+				(text.isEmpty()) ||
+				(text.isBlank())) {
+			LOGGER.log(Level.ERROR, "Problem with text in IdentSeparator. text -> " + text);
+			return textComponent;
+		}
 
 		Pattern pattern = Pattern.compile(SYMBOL_ORDER_REG_EX);
 		Matcher matcher = pattern.matcher(text);
