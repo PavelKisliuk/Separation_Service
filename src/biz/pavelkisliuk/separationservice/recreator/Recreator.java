@@ -27,6 +27,9 @@ package biz.pavelkisliuk.separationservice.recreator;
 
 import biz.pavelkisliuk.separationservice.model.TextComponent;
 import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The class repair {@code TextComponent} element's to {@code String}.
@@ -38,6 +41,8 @@ import biz.pavelkisliuk.separationservice.model.TextUnitComposite;
  * @since 12.0
  */
 public class Recreator {
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	/**
 	 * Return {@code String} repaired representation of {@code TextComponent}.
 	 * <p>
@@ -46,7 +51,13 @@ public class Recreator {
 	 * @return {@code String} repaired representation of {@code TextComponent}.
 	 */
 	public String recreate(TextComponent textComponent) {
+		if((textComponent == null)) {
+			LOGGER.log(Level.ERROR, "text component is null!");
+			return "";
+		}
+
 		StringBuilder stringBuilder = new StringBuilder();
+		LOGGER.log(Level.TRACE, "Start recreate: " + textComponent);
 		//------------------------------------------------------------
 		for (TextComponent ident : ((TextUnitComposite) textComponent).getTextBox()) {
 			stringBuilder.append("\t");
@@ -65,6 +76,7 @@ public class Recreator {
 		}
 		stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 		//------------------------------------------------------------
+		LOGGER.log(Level.DEBUG, "textComponent recreated:" + stringBuilder);
 		return stringBuilder.toString();
 	}
 }
